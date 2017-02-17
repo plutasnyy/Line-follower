@@ -39,10 +39,12 @@ void uruchom_mostek()
 }
 void loop()
 {
-
+	//BT.wczytaj();
+	//BT.wyswietl();
+	//BT.wyslij_dane(dane);
 	//wyswietl_cny();
 	//wyswietl_bt();
 	//uruchom_mostek();
-	//delay(500);
+	delay(1500);
 
 }

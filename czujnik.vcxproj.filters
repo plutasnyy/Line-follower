@@ -24,7 +24,10 @@
     <ClInclude Include="modul_bt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Header1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

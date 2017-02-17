@@ -1,8 +1,6 @@
 #include "modul_bt.h"
 #include <SoftwareSerial.h>    
 #include "Arduino.h"
-#include <SimpleList.h>
-SimpleList<int> myList;
 SoftwareSerial Bluetooth(10, 11);  //Utworz instancje Bluetooth 10-RX 11-TX
 								   // .available() .read()
 modul_bt::modul_bt()
@@ -10,21 +8,44 @@ modul_bt::modul_bt()
 	Bluetooth.begin(9600);                      //uruchom SerialSoftware z prêdkoœci¹ 9600 baud
 	Bluetooth.println("Polaczyles sie wlasnie z modulem Bluetooth HC-05");
 }
-
 modul_bt::~modul_bt()
 {
+	myList.clear();
 }
-
 void modul_bt::wyswietl()
 {
-	if (Bluetooth.available())
+	if (!myList.empty())
+	{
+		Serial.println("ODCZYTALEM: ");
+		for (SimpleList<String>::iterator i = myList.begin(); i != myList.end(); ++i)
 		{
-			int odczyt = 0;
-			Serial.println("WCZYTUJE DANE BLUETOOTH:");
-			while (Bluetooth.available())
+			Serial.println(*i);
+		}
+	}
+}
+void modul_bt::wczytaj()
+{
+	myList.clear();
+	if (Bluetooth.available())
+	{
+		while (Bluetooth.available())
+		{
+			odczyt = Bluetooth.read();
+			if (odczyt == '.' or odczyt == ' ')
 			{
-				odczyt = Bluetooth.read();
-				Serial.println(odczyt);
+				myList.push_back(przechowaj_slowo);
+				przechowaj_slowo = "";
+			}
+			else
+			{
+				przechowaj_slowo += odczyt;
 			}
 		}
+		myList.push_back(przechowaj_slowo);
+		przechowaj_slowo = "";
+	}
+}
+void modul_bt::wyslij_dane(data dane)
+{
+	//Bluetooth.println(dane.kp);
 }

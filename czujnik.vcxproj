@@ -80,7 +80,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="Header1.h" />
     <ClInclude Include="modul_bt.h" />
     <ClInclude Include="__vm\.czujnik.vsarduino.h" />
   </ItemGroup>
@@ -93,4 +94,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM3" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
