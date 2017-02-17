@@ -30,9 +30,15 @@
     <ClInclude Include="Header1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="wsp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="modul_bt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wsp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

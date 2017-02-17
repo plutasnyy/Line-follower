@@ -1,6 +1,6 @@
 #pragma once
 #include <SimpleList.h>
-#include "data.h"
+
 class modul_bt
 {
 private:
@@ -13,6 +13,6 @@ public:
 	~modul_bt();
 	void wczytaj();
 	void wyswietl();
-	void wyslij_dane(data);
+	void wyslij_dane();
 };
 

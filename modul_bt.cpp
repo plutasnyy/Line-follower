@@ -1,6 +1,7 @@
 #include "modul_bt.h"
 #include <SoftwareSerial.h>    
 #include "Arduino.h"
+
 SoftwareSerial Bluetooth(10, 11);  //Utworz instancje Bluetooth 10-RX 11-TX
 								   // .available() .read()
 modul_bt::modul_bt()
@@ -45,7 +46,7 @@ void modul_bt::wczytaj()
 		przechowaj_slowo = "";
 	}
 }
-void modul_bt::wyslij_dane(data dane)
+void modul_bt::wyslij_dane(struct dane *dane)
 {
-	//Bluetooth.println(dane.kp);
+	Serial.println(dane->ki);
 }

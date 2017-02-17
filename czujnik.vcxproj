@@ -83,10 +83,12 @@
     <ClInclude Include="config.h" />
     <ClInclude Include="Header1.h" />
     <ClInclude Include="modul_bt.h" />
+    <ClInclude Include="wsp.h" />
     <ClInclude Include="__vm\.czujnik.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="modul_bt.cpp" />
+    <ClCompile Include="wsp.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

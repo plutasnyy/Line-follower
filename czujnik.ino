@@ -1,8 +1,6 @@
-#include "modul_bt.h"
 #include "config.h"
-
+#include "modul_bt.h"
 modul_bt BT;
-
 void setup() {
 	pinMode(czujnik1, INPUT);
 	pinMode(czujnik2, INPUT);
@@ -39,6 +37,8 @@ void uruchom_mostek()
 }
 void loop()
 {
+
+	BT.wyslij_dane(&data);
 	//BT.wczytaj();
 	//BT.wyswietl();
 	//BT.wyslij_dane(dane);
