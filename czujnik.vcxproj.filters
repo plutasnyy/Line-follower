@@ -27,10 +27,10 @@
     <ClInclude Include="config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Header1.h">
+    <ClInclude Include="__vm\.Line-follower-master.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="wsp.h">
+    <ClInclude Include="czujniki.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,7 +38,7 @@
     <ClCompile Include="modul_bt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="wsp.cpp">
+    <ClCompile Include="czujniki.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

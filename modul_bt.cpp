@@ -6,7 +6,7 @@ SoftwareSerial Bluetooth(10, 11);  //Utworz instancje Bluetooth 10-RX 11-TX
 								   // .available() .read()
 modul_bt::modul_bt()
 {
-	Bluetooth.begin(9600);                      //uruchom SerialSoftware z prêdkoœci¹ 9600 baud
+	Bluetooth.begin(9600);                      //uruchom SerialSoftware z pr?dko?ci? 9600 baud
 	Bluetooth.println("Polaczyles sie wlasnie z modulem Bluetooth HC-05");
 }
 modul_bt::~modul_bt()
@@ -45,8 +45,4 @@ void modul_bt::wczytaj()
 		myList.push_back(przechowaj_slowo);
 		przechowaj_slowo = "";
 	}
-}
-void modul_bt::wyslij_dane(struct dane *dane)
-{
-	Serial.println(dane->ki);
 }
