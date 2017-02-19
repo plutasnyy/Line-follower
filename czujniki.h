@@ -10,6 +10,7 @@ private:
 public:
 	czujniki();
 	void ustaw_czujniki();
-	double oblicz_blad(double avg);
+	double oblicz_blad();
+	void wyswietl();
 	double zwroc_last_error();
 };

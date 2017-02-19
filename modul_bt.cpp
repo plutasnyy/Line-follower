@@ -42,6 +42,7 @@ void modul_bt::wczytaj()
 				przechowaj_slowo += odczyt;
 			}
 		}
+		//Serial.println(przechowaj_slowo);
 		myList.push_back(przechowaj_slowo);
 		przechowaj_slowo = "";
 	}
