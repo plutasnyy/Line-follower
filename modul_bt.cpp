@@ -2,7 +2,7 @@
 #include <SoftwareSerial.h>    
 #include "Arduino.h"
 
-SoftwareSerial Bluetooth(10, 11);  //Utworz instancje Bluetooth 10-RX 11-TX
+SoftwareSerial Bluetooth(11, 10);  //Utworz instancje Bluetooth 10-RX 11-TX
 								   // .available() .read()
 modul_bt::modul_bt()
 {

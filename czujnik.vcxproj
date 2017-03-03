@@ -82,6 +82,9 @@
   <ItemGroup>
     <ClInclude Include="config.h" />
     <ClInclude Include="czujniki.h" />
+    <ClInclude Include="data.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="modul_bt.h" />
     <ClInclude Include="__vm\.czujnik.vsarduino.h" />
     <ClInclude Include="__vm\.Line-follower-master.vsarduino.h" />

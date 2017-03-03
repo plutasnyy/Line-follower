@@ -8,28 +8,32 @@ int kd = 0, kp = 0, ki = 0;
 double avg = 200.0, error = 0, last_error = 0;
 void setup() {
 	Serial.begin(9600);
-	pinMode(6, OUTPUT); //Sygna? PWM silnika nr 1
-	pinMode(12, OUTPUT); //Sygna?y steruj?ce kierunkiem obrot?w silnika nr 1
+	pinMode(13, OUTPUT);
+	pinMode(12, OUTPUT); 
+	pinMode(6, OUTPUT); 
 	pinMode(8, OUTPUT);
+	pinMode(3, OUTPUT);
+	pinMode(4, OUTPUT);
+	pinMode(5, OUTPUT);
 }
 void uruchom_mostek()
 {
-	analogWrite(6, 255); //Niska pr?dko?? obrot?w  
-	digitalWrite(12, LOW); //Silnik nr 1 - obroty w lewo
-	digitalWrite(8, HIGH);
-	delay(300); //Odczekaj 3 sekundy
-
-	analogWrite(6, 255); //Maksymalna pr?dko?? obrot?w 
 	digitalWrite(12, HIGH); //Silnik nr 1 - obroty w lewo
 	digitalWrite(8, LOW);
-	delay(300); //Odczekaj 3 sekundy
+	digitalWrite(3, HIGH); //Silnik nr 1 - obroty w lewo
+	digitalWrite(4, LOW);
+	for (int i = 0; i <= 255; i+=10)
+	{
+		analogWrite(5, 255); //Maksymalna pr?dko?? obrot?w 
+		analogWrite(6, 255); //Maksymalna pr?dko?? obrot?w 
+	}
 }
 void loop()
 {
-	Serial.println("\n\n CZUJNIKI");
+	digitalWrite(13, HIGH);
 	czujniki.ustaw_czujniki();
 	czujniki.wyswietl();
-	Serial.println("\nBLAD:");
-	Serial.println(czujniki.oblicz_blad());
+	BT.wczytaj();
+	BT.wyswietl();
 	delay(1000);
 }
