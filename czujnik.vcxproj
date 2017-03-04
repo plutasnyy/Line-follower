@@ -86,12 +86,14 @@
       <FileType>CppCode</FileType>
     </ClInclude>
     <ClInclude Include="modul_bt.h" />
+    <ClInclude Include="silniki.h" />
     <ClInclude Include="__vm\.czujnik.vsarduino.h" />
     <ClInclude Include="__vm\.Line-follower-master.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="czujniki.cpp" />
     <ClCompile Include="modul_bt.cpp" />
+    <ClCompile Include="silniki.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

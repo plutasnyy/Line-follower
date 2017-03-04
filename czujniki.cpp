@@ -4,15 +4,11 @@
 
 czujniki::czujniki()	
 {
-	T_wsp[0] = -3;
-	T_wsp[1] = 0;
-	T_wsp[2] = 3;
 	pinMode(czujnik1, INPUT);
 	pinMode(czujnik2, INPUT);
 	pinMode(czujnik3, INPUT);
 	pinMode(czujnik4, INPUT);
 	pinMode(czujnik5, INPUT);
-
 	pinMode(czujnik6, INPUT);
 }
 void czujniki::ustaw_czujniki()
@@ -20,10 +16,8 @@ void czujniki::ustaw_czujniki()
 	wartosci_czujnikow[0] = analogRead(czujnik1);
 	wartosci_czujnikow[1] = analogRead(czujnik2);
 	wartosci_czujnikow[2] = analogRead(czujnik3);
-
 	wartosci_czujnikow[3] = analogRead(czujnik4);
 	wartosci_czujnikow[4] = analogRead(czujnik5);
-
 	wartosci_czujnikow[5] = analogRead(czujnik6);
 }
 void czujniki::wyswietl()
@@ -41,13 +35,18 @@ double czujniki::oblicz_blad()
 	flaga = 0;
 	last_error = error;
 	error = 0;
+
 	ustaw_czujniki();
-	for (int i = 0; i <= 2; i++)
+	wyswietl();
+	for (int i = 0; i <= 5; i++)
 	{
 		if (wartosci_czujnikow[i] >= avg)
+		{
 			error += T_wsp[i];
-		flaga++;
+			flaga++;
+		}
 	}
+
 	if (flaga == 0) error = last_error;
 	else error /= flaga;
 

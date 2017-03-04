@@ -36,12 +36,18 @@
     <ClInclude Include="data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="silniki.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="modul_bt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="czujniki.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="silniki.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
