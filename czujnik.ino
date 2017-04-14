@@ -1,6 +1,7 @@
 #include "modul_bt.h" // wymaga delay w petli minimum 1ms
 #include "czujniki.h"
 #include "silniki.h"
+#include "wsp.h"
 
 modul_bt BT;
 czujniki czujniki;
