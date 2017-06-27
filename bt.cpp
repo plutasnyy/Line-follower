@@ -1,19 +1,26 @@
-#include "modul_bt.h"
+#include "bt.h"
 #include <SoftwareSerial.h>    
 #include "Arduino.h"
 
-SoftwareSerial Bluetooth(10, 11);  //Utworz instancje Bluetooth 10-RX 11-TX
-								   // .available() .read()
-modul_bt::modul_bt()
+SoftwareSerial Bluetooth(10, 11);  //create Bluetooth 10-RX 11-TX .available() .read()
+bt::bt()
 {
 	Bluetooth.begin(9600);                      //uruchom SerialSoftware z pr?dko?ci? 9600 baud
 	Bluetooth.println("Polaczyles sie wlasnie z modulem Bluetooth HC-05");
 }
-modul_bt::~modul_bt()
+bt::~bt()
 {
 	myList.clear();
 }
-void modul_bt::wyswietl()
+void bt::send_int(int value)
+{
+	Bluetooth.println(value);
+}
+void bt::send_string(String value)
+{
+	Bluetooth.println(value);
+}
+void bt::print_input_list()
 {
 	if (!myList.empty())
 	{
@@ -24,26 +31,27 @@ void modul_bt::wyswietl()
 		}
 	}
 }
-void modul_bt::wczytaj()
+void bt::read()
 {
 	myList.clear();
+	String word = "";
+	char input;
 	if (Bluetooth.available())
 	{
 		while (Bluetooth.available())
 		{
-			odczyt = Bluetooth.read();
-			if (odczyt == '.' or odczyt == ' ')
+			input = Bluetooth.read();
+			if (input == '.' || input == ' ')
 			{
-				myList.push_back(przechowaj_slowo);
-				przechowaj_slowo = "";
+				myList.push_back(word);
+				word = "";
 			}
 			else
 			{
-				przechowaj_slowo += odczyt;
+				word += input;
 			}
 		}
-		//Serial.println(przechowaj_slowo);
-		myList.push_back(przechowaj_slowo);
-		przechowaj_slowo = "";
+		if (word.length() > 0 )
+			myList.push_back(word);
 	}
 }
