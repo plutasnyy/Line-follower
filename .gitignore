@@ -1,3 +1,6 @@
-czujnik.sln
-czujnik.vcxproj
-czujnik.vcxproj.filters	
+*sln
+*.vcxproj
+*.vcxproj.filters*
+Debug
+*vm*
+*vs*
