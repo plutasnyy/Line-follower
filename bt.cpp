@@ -2,7 +2,7 @@
 #include <SoftwareSerial.h>    
 #include "Arduino.h"
 
-SoftwareSerial Bluetooth(10, 11);  //create Bluetooth 10-RX 11-TX .available() .read()
+SoftwareSerial Bluetooth(8,5);  //create Bluetooth 10-RX 11-TX .available() .read()
 bt::bt()
 {
 	Bluetooth.begin(9600);                      //uruchom SerialSoftware z pr?dko?ci? 9600 baud

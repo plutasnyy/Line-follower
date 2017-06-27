@@ -16,9 +16,7 @@ void Engines::drive(int left, int right)
 	digitalWrite(S1_P, LOW);
 	digitalWrite(S2_P, HIGH); //Silnik nr 2 - obroty w lewo
 	digitalWrite(S2_T, LOW);
-	
 
-	analogWrite(S1, 255); 
-	analogWrite(S2, 100); 
-	
+	analogWrite(S1, left); 
+	analogWrite(S2, right); 	
 }

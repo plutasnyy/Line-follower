@@ -17,7 +17,7 @@ void Sensors::read_data(Manager manager)
 	input[3] = analogRead(sensor4);
 	input[4] = analogRead(sensor5);
 	input[5] = analogRead(sensor6);
-	print_data();
+	//print_data();
 	manager.update(input);
 }
 void Sensors::print_data()

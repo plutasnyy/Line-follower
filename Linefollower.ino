@@ -3,11 +3,9 @@
 #include "engines.h"
 #include "Manager.h"
 
-
-
 bt BT;
 Engines engines;
-Manager manager;
+Manager manager(engines,BT);
 Sensors sensors;
 
 void setup() 
@@ -17,6 +15,6 @@ void setup()
 }
 void loop()
 {
-	engines.drive(200, 200);
-	delay(10);
+	sensors.read_data(manager);
+	delay(12);
 }
