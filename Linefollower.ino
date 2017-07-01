@@ -2,6 +2,7 @@
 #include "sensors.h"
 #include "engines.h"
 #include "Manager.h"
+#include "HashTable.h"
 
 bt BT;
 Engines engines;
