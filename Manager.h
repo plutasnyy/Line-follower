@@ -8,7 +8,7 @@ class Manager
 public:
 	Engines engines;
 	bt BT;
-	Manager(Engines engines,bt BT );
+	Manager(Engines engines,bt BT);
 	void update(int input[]);
 	double border(double value);
 	void set_hash(String key, int value);

@@ -16,6 +16,7 @@ void setup()
 }
 void loop()
 {
-	sensors.read_data(manager);
-	delay(12);
+	//sensors.read_data(manager);
+	//BT.read(manager);
+	delay(10);
 }
