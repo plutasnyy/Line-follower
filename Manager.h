@@ -1,22 +1,40 @@
 #pragma once
 #include "engines.h"
 #include "HashTable.h"
-#include "bt.h"
+#include "SimpleList.h"
+#include <SoftwareSerial.h>    
+#include "Arduino.h"
+#include <ctype.h>
+#include <stdlib.h>
 
-class bt;
 
 class Manager
 {
 public:
+	class bt
+	{
+	private:
+		SimpleList<String> myList;
+		bool is_digit(String word);
+
+	public:
+		bt();
+		~bt();
+
+		HashTable *hash;
+		void read();
+		void print_input_list();
+		void send_int(int value);
+		void send_string(String value);
+	}BT;
 	Engines engines;
-	bt BT;
-	Manager(Engines engines,bt BT);
+	Manager(Engines engines);
 	void update(int input[]);
 	double border(double value);
 	void set_hash(String key, int value);
 
-private:
-	HashTable hash;
+public:
+	static HashTable hash;
 	int errors_scale[6] = { -3,-2,-1,1,2,3 };
 	int average = 240;
 	int kd = 50;
@@ -25,5 +43,6 @@ private:
 	double last_error = 0;
 	double PID;
 	double calculate_error(int input[]);
+
 };
 
