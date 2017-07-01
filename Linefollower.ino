@@ -8,6 +8,7 @@ bt BT;
 Engines engines;
 Manager manager(engines,BT);
 Sensors sensors;
+BT.manager = manager;
 
 void setup() 
 {

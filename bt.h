@@ -13,7 +13,8 @@ private:
 public:
 	bt();
 	~bt();
-	void read(Manager manager);
+	Manager manager;
+	void read();
 	void print_input_list();
 	void send_int(int value);
 	void send_string(String value);

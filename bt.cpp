@@ -30,7 +30,8 @@ void bt::print_input_list()
 		}
 	}
 }
-void bt::read(Manager manager)
+/*
+void bt::read()
 {
 	myList.clear();
 	String word = "";
@@ -71,11 +72,11 @@ void bt::read(Manager manager)
 		if (is_digit(temp))
 		{
 			value = atoi(temp.c_str());
-			manager.set_hash(key, value);
+			//manager.set_hash(key, value);
 		}
 	}
 }
-
+*/
 bool bt::is_digit(String word)
 {
 	for (int i = 0; i < word.length(); i++)

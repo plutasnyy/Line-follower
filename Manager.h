@@ -1,7 +1,9 @@
 #pragma once
 #include "engines.h"
-#include "bt.h"
 #include "HashTable.h"
+#include "bt.h"
+
+class bt;
 
 class Manager
 {
@@ -22,7 +24,6 @@ private:
 	int speed = 100;
 	double last_error = 0;
 	double PID;
-
 	double calculate_error(int input[]);
 };
 
