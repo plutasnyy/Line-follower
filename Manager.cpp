@@ -4,23 +4,21 @@ Manager::Manager(Engines engines,bt BT)
 {
 	this->engines = engines;
 	this->BT = BT;
+	hash.add("ki", 0);
+	hash.add("kd", 30);
+	hash.add("kp", 20);
+	hash.add("average", 250);
+	hash.add("speed", 100);
 }
 
 void Manager::update(int input[])
 {
-	BT.send_string("Czujniki:");
-	for (int i = 0; i < 6; i++) { BT.send_int(input[i]); }
-	BT.send_string("Error: ");
-
 	double error = calculate_error(input);
-	PID = error*kp + last_error*kd;
 
-	BT.send_int((int)error);
-	BT.send_string("PID:");
-	BT.send_int(int(PID));
+	PID = error*hash.get("kp") + last_error*hash.get("kd");
 
-	double left = border(speed + PID);
-	double right = border(speed - PID);
+	double left = border(hash.get("speed") + PID);
+	double right = border(hash.get("speed") - PID);
 
 	engines.drive(left,right);
 
@@ -33,7 +31,7 @@ double Manager::calculate_error(int input[])
 	double error = 0;
 	for (int i = 0; i < 6; i++)
 	{
-		if (input[i] > average)
+		if (input[i] > hash.get("average"))
 		{
 			error += errors_scale[i];
 			counter++;
@@ -47,4 +45,9 @@ double Manager::border(double value)
 	if (value < 0)value = 0;
 	if (value > 255)value = 255;
 	return (int)value;
+}
+
+void Manager::set_hash(String key, int value)
+{
+	hash.set(key, value);
 }

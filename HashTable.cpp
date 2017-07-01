@@ -22,3 +22,14 @@ int HashTable::get(String key)
 	}
 	return -1;
 }
+void HashTable::set(String key, int value)
+{
+	for (SimpleList<Item>::iterator i = List.begin(); i != List.end(); ++i)
+	{
+		if (i->key == key)
+		{
+			i->value = value;
+			break;
+		}	
+	}
+}

@@ -14,6 +14,7 @@ public:
 	SimpleList<Item> List;
 	void add(String key, int value);
 	int get(String key);
+	void set(String key, int value);
 	~HashTable();
 };
 
