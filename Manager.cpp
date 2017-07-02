@@ -9,7 +9,7 @@ Manager::Manager(Engines engines)
 	hash.add("kd", 30);
 	hash.add("kp", 20);
 	hash.add("average", 250);
-	hash.add("speed", 100);
+	hash.add("speed", 0);
 }
 
 void Manager::update(int input[])
@@ -17,6 +17,8 @@ void Manager::update(int input[])
 	String key;
 	int value;
 	BT.read(key,value);
+	BT.send_int(value);
+	BT.send_string(key);
 	if (!value == -1)
 		hash.set(key, value);
 
@@ -26,7 +28,7 @@ void Manager::update(int input[])
 	double left = border(hash.get("speed") + PID);
 	double right = border(hash.get("speed") - PID);
 
-	engines.drive(100,100);
+	engines.drive(left,right);
 
 	last_error = error;
 }
