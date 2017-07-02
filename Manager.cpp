@@ -5,7 +5,6 @@ SoftwareSerial Bluetooth(8, 5);  //create Bluetooth 10-RX 11-TX .available() .re
 Manager::Manager(Engines engines)
 {
 	this->engines = engines;
-	BT.hash = &hash;
 	hash.add("ki", 0);
 	hash.add("kd", 30);
 	hash.add("kp", 20);
@@ -15,7 +14,12 @@ Manager::Manager(Engines engines)
 
 void Manager::update(int input[])
 {
-	BT.read();
+	String key;
+	int value;
+	BT.read(key,value);
+	if (!value == -1)
+		hash.set(key, value);
+
 	double error = calculate_error(input);
 
 	PID = error*hash.get("kp") + last_error*hash.get("kd");
@@ -84,7 +88,7 @@ void Manager::bt::print_input_list()
 	}
 }
 
-void Manager::bt::read()
+void Manager::bt::read(String &key, int &value)
 {
 	myList.clear();
 	String word = "";
@@ -107,11 +111,11 @@ void Manager::bt::read()
 		if (word.length() > 0)
 			myList.push_back(word);
 	}
-	/*
+
 	if (myList.size() == 2)
 	{
-		String key, temp;
-		int value;
+		value = -1;
+		String temp;
 		int flaga = 0;
 		for (SimpleList<String>::iterator i = myList.begin(); i != myList.end(); ++i)
 		{
@@ -124,12 +128,9 @@ void Manager::bt::read()
 				temp = *i;
 		}
 		if (is_digit(temp))
-		{
 			value = atoi(temp.c_str());
-			hash.set(key, value);
-		}
 	}
-	*/
+
 }
 
 bool Manager::bt::is_digit(String word)

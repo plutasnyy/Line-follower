@@ -11,6 +11,7 @@
 class Manager
 {
 public:
+
 	class bt
 	{
 	private:
@@ -21,12 +22,12 @@ public:
 		bt();
 		~bt();
 
-		HashTable *hash;
-		void read();
+		void read(String &key, int &value);
 		void print_input_list();
 		void send_int(int value);
 		void send_string(String value);
-	}BT;
+	};
+
 	Engines engines;
 	Manager(Engines engines);
 	void update(int input[]);
@@ -43,6 +44,7 @@ public:
 	double last_error = 0;
 	double PID;
 	double calculate_error(int input[]);
+	bt BT;
 
 };
 
