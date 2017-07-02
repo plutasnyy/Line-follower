@@ -1,7 +1,5 @@
 #include "Manager.h"
 
-SoftwareSerial Bluetooth(8, 5);  //create Bluetooth 10-RX 11-TX .available() .read()
-
 Manager::Manager(Engines engines)
 {
 	this->engines = engines;
@@ -14,6 +12,12 @@ Manager::Manager(Engines engines)
 
 void Manager::update(int input[])
 {
+	HashTable x;
+	x.add("a", 1);
+	x.set("a", 2);
+	int a = x.get("a");
+	BT.send_int(a);
+
 	String key;
 	int value;
 	BT.read(key,value);
@@ -54,6 +58,9 @@ double Manager::border(double value)
 	if (value > 255)value = 255;
 	return (int)value;
 }
+
+
+SoftwareSerial Bluetooth(8, 5);  //create Bluetooth 10-RX 11-TX .available() .read()
 
 Manager::bt::bt()
 {
@@ -107,7 +114,7 @@ void Manager::bt::read(String &key, int &value)
 		if (word.length() > 0)
 			myList.push_back(word);
 	}
-
+	value = -2;
 	if (myList.size() == 2)
 	{
 		value = -1;
@@ -120,13 +127,12 @@ void Manager::bt::read(String &key, int &value)
 				key = *i;
 				flaga++;
 			}
-			else
+			if (flaga == 1)
 				temp = *i;
 		}
 		if (is_digit(temp))
-			value = atoi(temp.c_str());
+			value = str_to_int(temp);
 	}
-
 }
 
 bool Manager::bt::is_digit(String word)
@@ -135,4 +141,14 @@ bool Manager::bt::is_digit(String word)
 		if (!isdigit(word[i]))
 			return false;
 	return true;
+}
+int Manager::bt::str_to_int(String temp)
+{
+	int counter = 1, sum = 0;
+	for (int i = temp.length() - 1; i >= 0; i--)
+	{
+		sum += counter*(temp[i] - 48);
+		counter *= 10;
+	}
+	return sum;
 }

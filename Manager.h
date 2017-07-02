@@ -7,7 +7,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 
-
 class Manager
 {
 public:
@@ -26,6 +25,7 @@ public:
 		void print_input_list();
 		void send_int(int value);
 		void send_string(String value);
+		int str_to_int(String temp);
 	};
 
 	Engines engines;
