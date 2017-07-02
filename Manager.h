@@ -32,10 +32,9 @@ public:
 	Manager(Engines engines);
 	void update(int input[]);
 	double border(double value);
-	void set_hash(String key, int value);
 
 public:
-	static HashTable hash;
+	HashTable hash;
 	int errors_scale[6] = { -3,-2,-1,1,2,3 };
 	int average = 240;
 	int kd = 50;
