@@ -28,8 +28,18 @@ void HashTable::set(String key, int value)
 	{
 		if (i->key == key)
 		{
-			i->value = value;
+			(*i).value = value;
 			break;
 		}	
+	}
+}
+void HashTable::print()
+{
+	for (SimpleList<Item>::iterator i = List.begin(); i != List.end(); ++i)
+	{
+		Serial.print(i->key);
+		Serial.print(" : ");
+		Serial.print(i->value);
+		Serial.println(" ");
 	}
 }

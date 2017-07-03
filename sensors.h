@@ -8,6 +8,6 @@ class Sensors
 public:
 	int input[6];
 	Sensors();
-	void read_data(Manager manager);
+	void read_data(Manager &manager);
 	void print_data();
 };

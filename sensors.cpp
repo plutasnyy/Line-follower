@@ -9,7 +9,7 @@ Sensors::Sensors()
 	pinMode(sensor5, INPUT);
 	pinMode(sensor6, INPUT);
 }
-void Sensors::read_data(Manager manager)
+void Sensors::read_data(Manager &manager)
 {
 	input[0] = analogRead(sensor1);
 	input[1] = analogRead(sensor2);

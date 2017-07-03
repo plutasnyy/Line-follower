@@ -7,48 +7,59 @@ Manager::Manager(Engines engines)
 	hash.add("kd", 30);
 	hash.add("kp", 20);
 	hash.add("average", 250);
-	hash.add("speed", 0);
+	hash.add("speed", 20);
 }
 
 void Manager::update(int input[])
 {
-	HashTable x;
-	x.add("a", 1);
-	x.set("a", 2);
-	int a = x.get("a");
-	BT.send_int(a);
+	Serial.println("Zaczynam Manager::update");
+	delay(10);
+	Serial.println("Zrobilem delay");
 
 	String key;
 	int value;
+	Serial.println("ow");
 	BT.read(key,value);
-	BT.send_int(value);
-	BT.send_string(key);
-	if (!value == -1)
+	Serial.println(value);
+	if (!(value==-1 || value==-2))
 		hash.set(key, value);
-
+	BT.send_string(key);
+	BT.send_int(value);
+	BT.send_int(hash.get("speed"));
 	double error = calculate_error(input);
+	Serial.println("Obliczylem error");
 	PID = error*hash.get("kp") + last_error*hash.get("kd");
-
+	Serial.println("Mijam PID");
 	double left = border(hash.get("speed") + PID);
 	double right = border(hash.get("speed") - PID);
-
+	Serial.println("licze granice");
 	engines.drive(left,right);
-
+	Serial.println("Mijam silniczki");
 	last_error = error;
 }
 
 double Manager::calculate_error(int input[])
 {
-	int counter = 0;
-	double error = 0;
+	Serial.println("\nZaczynam liczyc blad");
+	error = 0;
+	counter = 0;
+	Serial.println("Przypisalem counter = 0");
+	this->average = hash.get("average");
+	Serial.println("Przed forem");
+
+
 	for (int i = 0; i < 6; i++)
 	{
-		if (input[i] > hash.get("average"))
+		Serial.print(i);
+		if (input[i] > average)
 		{
+			Serial.print("-");
 			error += errors_scale[i];
 			counter++;
 		}
+		Serial.print("+ ");
 	}
+	Serial.println("Koncze liczyc blad\n");
 	return counter == 0 ? 0 : (double)error / counter;
 }
 
