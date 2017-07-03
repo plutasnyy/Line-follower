@@ -1,18 +1,20 @@
-#include "bt.h" // wymaga delay w petli minimum 1ms
 #include "sensors.h"
 #include "engines.h"
 #include "Manager.h"
+#include "HashTable.h"
 
-bt BT;
 Engines engines;
-Manager manager(engines,BT);
+Manager manager(engines);
 Sensors sensors;
-
+Manager::bt X;
+HashTable HASH;
 void setup() 
 {
 }
 void loop()
 {
+	Serial.println(" ");
+	//Serial.println(5);
 	sensors.read_data(manager);
-	delay(12);
+	//Serial.println("w");
 }
